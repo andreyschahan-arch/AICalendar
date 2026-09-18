@@ -102,7 +102,7 @@ public class WidgetConfigActivity extends Activity {
         // Обновляем виджет
         ShiftWidgetProvider.updateAllWidgets(this);
 
-        // Передаем результат обратно системе
+        // Передаем результат обратно системе (для штатного меню EMUI)
         Intent resultValue = new Intent();
         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         setResult(RESULT_OK, resultValue);
