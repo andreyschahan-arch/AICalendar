@@ -54,9 +54,16 @@ public class ShiftWidgetProvider extends AppWidgetProvider {
         }
     }
 
-    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
         SharedPreferences prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+
+        // --- ДОБАВЛЯЕМ: Настройка цвета и прозрачности фона виджета ---
+        // По умолчанию ставим полупрозрачный темный фон (#CC121212), если настройка еще не создана
+        int defaultBgColor = Color.parseColor("#CC121212");
+        int widgetBgColor = prefs.getInt("widget_bg_color_" + appWidgetId, defaultBgColor);
+        views.setInt(R.id.widget_main_layout, "setBackgroundColor", widgetBgColor);
+        // -------------------------------------------------------------
 
         // 1. Отображение названия дня смены для "Сегодня"
         String todayShift = prefs.getString("today_shift_name", "");

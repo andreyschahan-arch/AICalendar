@@ -139,6 +139,19 @@
 
 		</receiver>
 
+		<activity
+			android:name=".WidgetConfigActivity"
+			android:exported="true">
+
+			<intent-filter>
+
+				<action
+					android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+
+			</intent-filter>
+
+		</activity>
+
 	</application>
 
 </manifest>
